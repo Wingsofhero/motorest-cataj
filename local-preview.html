@@ -1,0 +1,1305 @@
+<!doctype html>
+<html lang="sk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Moderný motorest pri D1 s domácou kuchyňou, Drive In službou a príjemnou atmosférou."
+    />
+    <title>Motorest Čataj | Poctivé jedlo pri D1</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #fafaf9;
+        --paper: #ffffff;
+        --ink: #020617;
+        --muted: #5f6b7a;
+        --line: #e2e8f0;
+        --slate: #0f172a;
+        --emerald: #064e3b;
+        --emerald-soft: #e9f0e8;
+        --rose: #be123c;
+        --amber: #fcd34d;
+        --stone: #f5f5f4;
+        font-family:
+          Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        min-width: 320px;
+        background: var(--bg);
+        color: var(--ink);
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      img {
+        display: block;
+        max-width: 100%;
+      }
+
+      button,
+      input,
+      textarea {
+        font: inherit;
+      }
+
+      .container {
+        width: min(100% - 40px, 1180px);
+        margin: 0 auto;
+      }
+
+      .hero {
+        position: relative;
+        min-height: 72svh;
+        overflow: hidden;
+        background: var(--slate);
+        color: #fff;
+      }
+
+      .hero img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .hero::after {
+        position: absolute;
+        inset: 0;
+        content: "";
+        background: linear-gradient(90deg, rgba(9, 17, 14, 0.94), rgba(9, 17, 14, 0.68) 43%, rgba(9, 17, 14, 0.22));
+      }
+
+      .topbar {
+        position: relative;
+        z-index: 2;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        padding: 20px 0;
+      }
+
+      .brand {
+        font-weight: 750;
+        letter-spacing: 0.02em;
+      }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        gap: 28px;
+        color: rgba(255, 255, 255, 0.82);
+        font-size: 14px;
+        font-weight: 650;
+      }
+
+      .nav a:hover {
+        color: var(--amber);
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 2;
+        display: flex;
+        min-height: calc(72svh - 78px);
+        flex-direction: column;
+        justify-content: center;
+        padding: 32px 0 52px;
+      }
+
+      .eyebrow {
+        margin: 0;
+        color: var(--amber);
+        font-size: 13px;
+        font-weight: 800;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+      }
+
+      h1,
+      h2 {
+        font-family: Georgia, "Times New Roman", serif;
+        letter-spacing: 0;
+      }
+
+      h1 {
+        max-width: 850px;
+        margin: 20px 0 0;
+        color: #fff;
+        font-size: clamp(52px, 8vw, 94px);
+        font-weight: 650;
+        line-height: 0.95;
+      }
+
+      .hero-lead {
+        max-width: 690px;
+        margin: 24px 0 0;
+        color: #fff;
+        font-size: clamp(24px, 4vw, 34px);
+        font-weight: 750;
+        line-height: 1.12;
+      }
+
+      .hero-copy {
+        max-width: 670px;
+        margin: 20px 0 0;
+        color: rgba(255, 255, 255, 0.82);
+        font-size: 18px;
+        line-height: 1.75;
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 30px;
+      }
+
+      .btn {
+        display: inline-flex;
+        min-height: 46px;
+        align-items: center;
+        justify-content: center;
+        border: 0;
+        border-radius: 6px;
+        padding: 12px 20px;
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: 800;
+      }
+
+      .btn-primary {
+        background: #fff;
+        color: var(--slate);
+        box-shadow: 0 18px 45px rgba(0, 0, 0, 0.18);
+      }
+
+      .btn-primary:hover {
+        background: #fef3c7;
+      }
+
+      .btn-amber {
+        background: var(--amber);
+        color: var(--slate);
+      }
+
+      .btn-amber:hover {
+        background: #fde68a;
+      }
+
+      .btn-dark {
+        background: var(--slate);
+        color: #fff;
+      }
+
+      .btn-dark:hover {
+        background: #1e293b;
+      }
+
+      .btn-outline {
+        border: 1px solid rgba(255, 255, 255, 0.35);
+        background: transparent;
+        color: #fff;
+      }
+
+      .btn-outline:hover {
+        border-color: #fff;
+        background: rgba(255, 255, 255, 0.1);
+      }
+
+      .info-band {
+        border-bottom: 1px solid var(--line);
+        background: var(--paper);
+      }
+
+      .info-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 20px;
+        padding: 24px 0;
+      }
+
+      .label {
+        margin: 0;
+        color: var(--emerald);
+        font-size: 12px;
+        font-weight: 850;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+
+      .info-grid strong {
+        display: block;
+        margin-top: 6px;
+        font-size: 19px;
+      }
+
+      section {
+        scroll-margin-top: 24px;
+      }
+
+      .section {
+        padding: 72px 0;
+      }
+
+      .section-white {
+        background: var(--paper);
+      }
+
+      .section-dark {
+        background: var(--slate);
+        color: #fff;
+      }
+
+      .section-soft {
+        background: var(--emerald-soft);
+      }
+
+      .section-title {
+        max-width: 790px;
+        margin: 14px 0 0;
+        font-size: clamp(38px, 6vw, 58px);
+        font-weight: 650;
+        line-height: 1.05;
+      }
+
+      .section-copy {
+        max-width: 760px;
+        margin: 24px 0 0;
+        color: var(--muted);
+        font-size: 18px;
+        line-height: 1.78;
+      }
+
+      .two-col {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(300px, 0.82fr);
+        gap: 44px;
+        align-items: center;
+      }
+
+      .highlight-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+        margin-top: 30px;
+      }
+
+      .highlight {
+        display: flex;
+        gap: 12px;
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        background: var(--paper);
+        padding: 16px;
+        box-shadow: 0 1px 8px rgba(15, 23, 42, 0.04);
+      }
+
+      .dot {
+        width: 10px;
+        height: 10px;
+        flex: 0 0 auto;
+        border-radius: 999px;
+        margin-top: 7px;
+        background: var(--emerald);
+      }
+
+      .highlight span:last-child {
+        color: #1f2937;
+        font-size: 14px;
+        font-weight: 720;
+        line-height: 1.55;
+      }
+
+      .feature-stack {
+        display: grid;
+        gap: 16px;
+      }
+
+      .feature-tile {
+        border-radius: 6px;
+        background: var(--slate);
+        padding: 26px;
+        color: #fff;
+        box-shadow: 0 24px 55px rgba(15, 23, 42, 0.1);
+      }
+
+      .feature-tile h3 {
+        margin: 0;
+        font-size: 25px;
+      }
+
+      .feature-tile ul {
+        display: grid;
+        gap: 14px;
+        margin: 20px 0 0;
+        padding: 0;
+        color: rgba(255, 255, 255, 0.78);
+        font-size: 14px;
+        list-style: none;
+      }
+
+      .feature-tile li {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .feature-tile li::before {
+        width: 28px;
+        height: 1px;
+        flex: 0 0 auto;
+        background: var(--amber);
+        content: "";
+      }
+
+      .segment {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 4px;
+        margin-top: 34px;
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        background: #f1f5f9;
+        padding: 4px;
+      }
+
+      .segment button {
+        border: 0;
+        border-radius: 6px;
+        background: transparent;
+        color: #334155;
+        cursor: pointer;
+        padding: 10px 16px;
+        font-size: 14px;
+        font-weight: 800;
+      }
+
+      .segment button:hover {
+        background: #fff;
+      }
+
+      .segment button.active {
+        background: var(--slate);
+        color: #fff;
+        box-shadow: 0 1px 6px rgba(15, 23, 42, 0.12);
+      }
+
+      .menu-grid {
+        display: grid;
+        grid-template-columns: minmax(280px, 0.9fr) minmax(0, 1.1fr);
+        gap: 32px;
+        margin-top: 32px;
+      }
+
+      .menu-lead {
+        border-radius: 6px;
+        background: var(--emerald);
+        padding: 28px;
+        color: #fff;
+      }
+
+      .menu-lead h3 {
+        margin: 16px 0 0;
+        font-size: 32px;
+        line-height: 1.1;
+      }
+
+      .menu-lead p:last-child {
+        margin: 16px 0 0;
+        color: rgba(255, 255, 255, 0.8);
+        line-height: 1.7;
+      }
+
+      .item-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .menu-item {
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        background: var(--stone);
+        padding: 20px;
+      }
+
+      .menu-item h4 {
+        margin: 0;
+        font-size: 19px;
+      }
+
+      .menu-item p {
+        margin: 10px 0 0;
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.6;
+      }
+
+      .gallery-head {
+        display: flex;
+        justify-content: space-between;
+        gap: 28px;
+        align-items: flex-end;
+      }
+
+      .gallery-head p:last-child {
+        max-width: 430px;
+        margin: 0;
+        color: rgba(255, 255, 255, 0.68);
+        font-size: 14px;
+        line-height: 1.7;
+      }
+
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 20px;
+        margin-top: 38px;
+      }
+
+      .card {
+        overflow: hidden;
+        border-radius: 6px;
+        background: var(--paper);
+        color: var(--ink);
+      }
+
+      .card img {
+        width: 100%;
+        aspect-ratio: 4 / 3;
+        object-fit: cover;
+      }
+
+      .card-body {
+        padding: 20px;
+      }
+
+      .card h3 {
+        margin: 0;
+        font-size: 21px;
+      }
+
+      .card p {
+        margin: 10px 0 0;
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.65;
+      }
+
+      .drive-grid {
+        display: grid;
+        grid-template-columns: 0.95fr 1.05fr;
+        gap: 44px;
+        align-items: center;
+      }
+
+      .drive-grid img {
+        width: 100%;
+        min-height: 320px;
+        border-radius: 6px;
+        object-fit: cover;
+        box-shadow: 0 28px 70px rgba(6, 78, 59, 0.18);
+      }
+
+      .review-grid {
+        display: grid;
+        grid-template-columns: 0.72fr 1.28fr;
+        gap: 34px;
+      }
+
+      .quotes {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      blockquote {
+        margin: 0;
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        background: var(--paper);
+        padding: 20px;
+        box-shadow: 0 1px 8px rgba(15, 23, 42, 0.04);
+      }
+
+      blockquote p {
+        margin: 0;
+        color: #1f2937;
+        line-height: 1.7;
+      }
+
+      .contact-grid {
+        display: grid;
+        grid-template-columns: 0.9fr 1.1fr;
+        gap: 44px;
+      }
+
+      .contact-stack {
+        display: grid;
+        gap: 20px;
+        margin-top: 32px;
+      }
+
+      .contact-line {
+        border-left: 2px solid var(--emerald);
+        padding-left: 16px;
+      }
+
+      .contact-line p {
+        margin: 0;
+      }
+
+      .contact-line strong,
+      .contact-line a {
+        display: block;
+        margin-top: 4px;
+        font-size: 21px;
+        font-weight: 760;
+      }
+
+      .mini-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+        margin-top: 32px;
+      }
+
+      .mini {
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        background: var(--stone);
+        padding: 16px;
+      }
+
+      .mini h3 {
+        margin: 0;
+        font-size: 16px;
+      }
+
+      .mini ul {
+        display: grid;
+        gap: 8px;
+        margin: 12px 0 0;
+        padding: 0;
+        color: var(--muted);
+        font-size: 14px;
+        list-style: none;
+      }
+
+      form {
+        border-radius: 6px;
+        background: var(--slate);
+        padding: 26px;
+        color: #fff;
+        box-shadow: 0 28px 70px rgba(15, 23, 42, 0.12);
+      }
+
+      form h3 {
+        margin: 0;
+        font-size: 26px;
+      }
+
+      .form-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+        margin-top: 22px;
+      }
+
+      label {
+        display: grid;
+        gap: 8px;
+        color: rgba(255, 255, 255, 0.78);
+        font-size: 14px;
+        font-weight: 720;
+      }
+
+      input,
+      textarea {
+        width: 100%;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 6px;
+        outline: none;
+        background: #fff;
+        color: var(--ink);
+        padding: 13px 12px;
+      }
+
+      textarea {
+        min-height: 112px;
+        resize: vertical;
+      }
+
+      input:focus,
+      textarea:focus {
+        border-color: var(--amber);
+      }
+
+      .message-label {
+        margin-top: 16px;
+      }
+
+      .success {
+        display: none;
+        margin: 16px 0 0;
+        border-radius: 6px;
+        background: rgba(16, 185, 129, 0.16);
+        color: #d1fae5;
+        padding: 13px;
+        font-size: 14px;
+        font-weight: 720;
+      }
+
+      .map {
+        width: 100%;
+        height: 320px;
+        border: 0;
+        border-radius: 6px;
+        box-shadow: 0 18px 44px rgba(15, 23, 42, 0.1);
+      }
+
+      .contact-side {
+        display: grid;
+        gap: 20px;
+      }
+
+      .assistant-wrap {
+        position: fixed;
+        right: 20px;
+        bottom: 20px;
+        z-index: 50;
+        display: flex;
+        max-width: calc(100vw - 40px);
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 12px;
+      }
+
+      .assistant {
+        display: none;
+        width: min(390px, calc(100vw - 40px));
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        background: #fff;
+        padding: 16px;
+        box-shadow: 0 26px 80px rgba(15, 23, 42, 0.2);
+      }
+
+      .assistant.open {
+        display: block;
+      }
+
+      .assistant-head {
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+        align-items: flex-start;
+      }
+
+      .assistant h2 {
+        margin: 8px 0 0;
+        font-size: 22px;
+      }
+
+      .close-btn {
+        border: 0;
+        border-radius: 6px;
+        background: transparent;
+        color: #64748b;
+        cursor: pointer;
+        padding: 4px 8px;
+        font-size: 24px;
+        line-height: 1;
+      }
+
+      .close-btn:hover {
+        background: #f1f5f9;
+      }
+
+      .assistant-choices {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+        margin-top: 16px;
+      }
+
+      .assistant-choices button {
+        border: 0;
+        border-radius: 6px;
+        background: #f1f5f9;
+        color: #334155;
+        cursor: pointer;
+        padding: 10px;
+        font-size: 14px;
+        font-weight: 800;
+      }
+
+      .assistant-choices button.active {
+        background: var(--emerald);
+        color: #fff;
+      }
+
+      .assistant-answer {
+        margin-top: 16px;
+        border-radius: 6px;
+        background: var(--stone);
+        padding: 16px;
+      }
+
+      .assistant-answer h3 {
+        margin: 0;
+        font-size: 17px;
+      }
+
+      .assistant-answer p {
+        margin: 8px 0 0;
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.6;
+      }
+
+      .assistant-answer a {
+        margin-top: 16px;
+      }
+
+      .assist-toggle {
+        border-radius: 999px;
+        background: var(--rose);
+        color: #fff;
+        box-shadow: 0 18px 40px rgba(136, 19, 55, 0.25);
+      }
+
+      .assist-toggle:hover {
+        background: #9f1239;
+      }
+
+      @media (max-width: 900px) {
+        .nav {
+          display: none;
+        }
+
+        .info-grid,
+        .two-col,
+        .menu-grid,
+        .drive-grid,
+        .review-grid,
+        .contact-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .gallery-head {
+          display: block;
+        }
+
+        .gallery-head p:last-child {
+          margin-top: 20px;
+        }
+
+        .gallery-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .info-grid,
+        .mini-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      @media (max-width: 620px) {
+        .container {
+          width: min(100% - 28px, 1180px);
+        }
+
+        .hero {
+          min-height: 76svh;
+        }
+
+        .hero-content {
+          min-height: calc(76svh - 78px);
+        }
+
+        .topbar {
+          gap: 12px;
+        }
+
+        .topbar .btn {
+          min-height: 40px;
+          padding: 9px 12px;
+        }
+
+        .actions,
+        .form-grid {
+          display: grid;
+          grid-template-columns: 1fr;
+        }
+
+        .highlight-grid,
+        .item-grid,
+        .quotes,
+        .mini-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .section {
+          padding: 56px 0;
+        }
+
+        .section-title {
+          font-size: 38px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section class="hero" id="top">
+        <img src="./src/assets/motorest-hero.png" alt="" />
+        <div class="container">
+          <header class="topbar">
+            <a class="brand" href="#top" aria-label="Motorest Čataj">Motorest Čataj</a>
+            <nav class="nav" aria-label="Hlavná navigácia">
+              <a href="#menu">Menu</a>
+              <a href="#drive-in">Drive In</a>
+              <a href="#recenzie">Recenzie</a>
+              <a href="#kontakt">Kontakt</a>
+            </nav>
+            <a class="btn btn-amber" href="tel:+421904555777">Zavolať</a>
+          </header>
+          <div class="hero-content">
+            <p class="eyebrow">Moderný motorest pri D1</p>
+            <h1>Motorest Čataj</h1>
+            <p class="hero-lead">Poctivé jedlo na ceste aj mimo nej.</p>
+            <p class="hero-copy">
+              Domáca kuchyňa, rýchla obsluha, príjemný interiér a široký výber jedál pre vodičov, rodiny aj turistov.
+            </p>
+            <div class="actions">
+              <a class="btn btn-primary" href="#rezervacia">Rezervovať alebo poslať dopyt</a>
+              <a
+                class="btn btn-outline"
+                href="https://www.google.com/maps/search/?api=1&query=Motorest%20Cataj%20D1%20900%2083%20Cataj"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Navigovať k motorestu
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="info-band">
+        <div class="container info-grid">
+          <div>
+            <p class="label">Hodnotenie</p>
+            <strong>4,3 / 5</strong>
+          </div>
+          <div>
+            <p class="label">Recenzie</p>
+            <strong>2 800+</strong>
+          </div>
+          <div>
+            <p class="label">Adresa</p>
+            <strong>D1, 900 83 Čataj</strong>
+          </div>
+          <div>
+            <p class="label">Otváracie hodiny</p>
+            <strong>Denne od 10:00</strong>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container two-col">
+          <div>
+            <p class="eyebrow" style="color: var(--rose)">O nás</p>
+            <h2 class="section-title">Príjemná zastávka pre rýchly obed, rannú kávu aj pokojné posedenie.</h2>
+            <p class="section-copy">
+              Či už cestujete po diaľnici, idete s rodinou alebo potrebujete rýchlo načerpať energiu, Motorest Čataj spája
+              poctivú domácu kuchyňu, moderné priestory a organizovanú obsluhu aj počas väčšej návštevnosti.
+            </p>
+            <div class="highlight-grid">
+              <div class="highlight"><span class="dot"></span><span>Veľký výber jedál formou bufetu</span></div>
+              <div class="highlight"><span class="dot"></span><span>Čerstvé šaláty a domáce dezerty</span></div>
+              <div class="highlight"><span class="dot"></span><span>Výborné burgre a rýchle snacky</span></div>
+              <div class="highlight"><span class="dot"></span><span>Moderné čisté priestory</span></div>
+              <div class="highlight"><span class="dot"></span><span>Rýchle vybavenie aj počas špičky</span></div>
+              <div class="highlight"><span class="dot"></span><span>Drive In pre krátku zastávku</span></div>
+            </div>
+          </div>
+          <div class="feature-stack">
+            <article class="feature-tile">
+              <h3>Atmosféra</h3>
+              <ul>
+                <li>Čistota</li>
+                <li>Útulné prostredie</li>
+                <li>Moderný interiér</li>
+                <li>Krásne výhľady</li>
+              </ul>
+            </article>
+            <article class="feature-tile">
+              <h3>Ideálne pre</h3>
+              <ul>
+                <li>Rodiny s deťmi</li>
+                <li>Turistov</li>
+                <li>Vodičov na dlhých trasách</li>
+                <li>Skupiny aj jednotlivcov</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-white" id="menu">
+        <div class="container">
+          <p class="eyebrow" style="color: var(--emerald)">Čo u nás nájdete</p>
+          <h2 class="section-title">Jedlo, nápoje a služby pripravené pre ľudí na cestách.</h2>
+          <div class="segment" role="tablist" aria-label="Ponuka">
+            <button class="active" data-menu="food" type="button">Jedlá</button>
+            <button data-menu="fresh" type="button">Čerstvé</button>
+            <button data-menu="drinks" type="button">Nápoje</button>
+            <button data-menu="services" type="button">Služby</button>
+          </div>
+          <div class="menu-grid">
+            <div class="menu-lead">
+              <p class="eyebrow" id="menu-label">Jedlá</p>
+              <h3 id="menu-title">Široký výber počas celého dňa</h3>
+              <p id="menu-description">Raňajky, obedy, večere, malé jedlá aj poctivé teplé porcie z bufetu.</p>
+            </div>
+            <div class="item-grid" id="menu-items"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-dark">
+        <div class="container">
+          <div class="gallery-head">
+            <div>
+              <p class="eyebrow">Galéria</p>
+              <h2 class="section-title">Miesto, kde krátka prestávka vie chutiť ako poriadny oddych.</h2>
+            </div>
+            <p>Výber jedál a priestoru pre cestujúcich, ktorí chcú dobrú prestávku bez komplikácií.</p>
+          </div>
+          <div class="gallery-grid">
+            <article class="card">
+              <img src="./src/assets/buffet.png" alt="Bufet a čerstvý výber" />
+              <div class="card-body">
+                <h3>Bufet a čerstvý výber</h3>
+                <p>Teplé jedlá, šaláty a prílohy pripravené tak, aby ste nemuseli čakať.</p>
+              </div>
+            </article>
+            <article class="card">
+              <img src="./src/assets/burger-dessert.png" alt="Burgre a domáce dezerty" />
+              <div class="card-body">
+                <h3>Burgre a domáce dezerty</h3>
+                <p>Rýchle jedlo na cestu aj sladká bodka ku káve.</p>
+              </div>
+            </article>
+            <article class="card">
+              <img src="./src/assets/drive-in.png" alt="Drive In pri D1" />
+              <div class="card-body">
+                <h3>Drive In pri D1</h3>
+                <p>Pohodlné riešenie, keď potrebujete dobré jedlo bez dlhej prestávky.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-soft" id="drive-in">
+        <div class="container drive-grid">
+          <img src="./src/assets/drive-in.png" alt="Drive In" />
+          <div>
+            <p class="eyebrow" style="color: var(--rose)">Drive In</p>
+            <h2 class="section-title">Dobré jedlo aj vtedy, keď je prestávka krátka.</h2>
+            <p class="section-copy">
+              Drive In dáva motorestu jasnú predajnú výhodu: zákazník vie rýchlo zastaviť, objednať a pokračovať v ceste
+              bez zbytočného zdržiavania.
+            </p>
+            <div class="actions">
+              <a class="btn btn-dark" href="tel:+421904555777">Zavolať vopred</a>
+              <a
+                class="btn"
+                style="border: 1px solid #cbd5e1; color: var(--slate)"
+                href="https://www.google.com/maps/search/?api=1&query=Motorest%20Cataj%20D1%20900%2083%20Cataj"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Spustiť navigáciu
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="recenzie">
+        <div class="container review-grid">
+          <div>
+            <p class="eyebrow" style="color: var(--emerald)">Recenzie</p>
+            <h2 class="section-title">Dôvera postavená na tisícoch zastávok.</h2>
+            <p class="section-copy">Hodnotenie 4,3 / 5 a viac než 2 800 recenzií pomáhajú návštevníkovi rýchlo sa rozhodnúť.</p>
+          </div>
+          <div class="quotes">
+            <blockquote><p>„Jedlo bolo čerstvé, chutné, veľa šalátov na výber.“</p></blockquote>
+            <blockquote><p>„Atmosféra top, skvelé jedlo a veľmi príjemná obsluha.“</p></blockquote>
+            <blockquote><p>„Burger bol vynikajúci a priestor ma úplne uchvátil.“</p></blockquote>
+            <blockquote><p>„Tiramisu bolo jedno z najlepších, aké som kedy jedol.“</p></blockquote>
+            <blockquote><p>„Aj keď bolo parkovisko plné, nemuseli sme dlho čakať.“</p></blockquote>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-white" id="kontakt">
+        <div class="container contact-grid">
+          <div>
+            <p class="eyebrow" style="color: var(--rose)">Kontakt</p>
+            <h2 class="section-title">Zastavte sa pri D1 alebo si vybavte jedlo vopred.</h2>
+            <div class="contact-stack">
+              <div class="contact-line">
+                <p class="label">Adresa</p>
+                <strong>D1, 900 83 Čataj</strong>
+              </div>
+              <div class="contact-line">
+                <p class="label">Telefón</p>
+                <a href="tel:+421904555777">0904 555 777</a>
+              </div>
+              <div class="contact-line">
+                <p class="label">Otváracie hodiny</p>
+                <strong>Denne od 10:00</strong>
+              </div>
+            </div>
+            <div class="mini-grid">
+              <div class="mini">
+                <h3>Platby</h3>
+                <ul>
+                  <li>Platobné karty</li>
+                  <li>NFC mobilné platby</li>
+                  <li>Hotovosť</li>
+                </ul>
+              </div>
+              <div class="mini">
+                <h3>Parkovanie</h3>
+                <ul>
+                  <li>Bezplatné parkovisko</li>
+                  <li>Dostatok miest</li>
+                  <li>Bezbariérové státie</li>
+                </ul>
+              </div>
+              <div class="mini">
+                <h3>Prístup</h3>
+                <ul>
+                  <li>Vstup</li>
+                  <li>Toalety</li>
+                  <li>Parkovanie</li>
+                  <li>Sedenie</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="contact-side" id="rezervacia">
+            <form id="reservation-form">
+              <h3>Rezervácia alebo rýchly dopyt</h3>
+              <div class="form-grid">
+                <label>
+                  Meno
+                  <input name="name" required />
+                </label>
+                <label>
+                  Telefón
+                  <input name="phone" required />
+                </label>
+                <label>
+                  Dátum
+                  <input name="date" type="date" />
+                </label>
+                <label>
+                  Počet osôb
+                  <input min="1" name="people" type="number" />
+                </label>
+              </div>
+              <label class="message-label">
+                Správa
+                <textarea name="message" placeholder="Rezervácia, Drive In, skupina alebo otázka k ponuke"></textarea>
+              </label>
+              <button class="btn btn-amber" style="width: 100%; margin-top: 18px" type="submit">Odoslať dopyt</button>
+              <p class="success" id="form-success">Ďakujeme, dopyt sme prijali. Čoskoro sa ozveme.</p>
+            </form>
+            <iframe
+              class="map"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              src="https://www.google.com/maps?q=D1%2C%20900%2083%20Cataj%2C%20Slovakia&output=embed"
+              title="Mapa Motorest Čataj"
+            ></iframe>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div class="assistant-wrap">
+      <section class="assistant" id="assistant-panel" aria-live="polite">
+        <div class="assistant-head">
+          <div>
+            <p class="label">Rýchly asistent</p>
+            <h2>Ako pomôžeme?</h2>
+          </div>
+          <button class="close-btn" id="assistant-close" type="button" aria-label="Zavrieť asistenta">×</button>
+        </div>
+        <div class="assistant-choices">
+          <button class="active" data-topic="menu" type="button">Menu</button>
+          <button data-topic="drive" type="button">Drive In</button>
+          <button data-topic="family" type="button">Rezervácia</button>
+          <button data-topic="contact" type="button">Kontakt</button>
+        </div>
+        <div class="assistant-answer">
+          <h3 id="assistant-title">Dnešný výber</h3>
+          <p id="assistant-body">
+            Najrýchlejšia voľba je bufet, šalátový bar alebo burger. Výber si viete poskladať podľa chuti priamo na mieste.
+          </p>
+          <a class="btn btn-dark" id="assistant-action" href="#menu">Pozrieť výber</a>
+        </div>
+      </section>
+      <button class="btn assist-toggle" id="assistant-toggle" type="button" aria-expanded="false">Rýchla pomoc</button>
+    </div>
+
+    <script>
+      const menus = {
+        food: {
+          label: "Jedlá",
+          title: "Široký výber počas celého dňa",
+          description: "Raňajky, obedy, večere, malé jedlá aj poctivé teplé porcie z bufetu.",
+          items: ["Raňajky", "Obedy", "Večere", "Vegetariánske jedlá", "Vegánske možnosti", "Snacky"],
+        },
+        fresh: {
+          label: "Čerstvé",
+          title: "Šalátový bar, burgre a dezerty",
+          description: "Jedlá, ktoré si hostia môžu nakombinovať podľa chuti a tempa cesty.",
+          items: ["Čerstvé šaláty", "Burgre", "Domáce dezerty", "Tiramisu", "Sezónne prílohy"],
+        },
+        drinks: {
+          label: "Nápoje",
+          title: "Káva, čaje aj nápoje k jedlu",
+          description: "Rýchla ranná káva, pokojné posedenie aj klasická ponuka ku večeri.",
+          items: ["Kvalitná káva", "Výber čajov", "Pivo", "Víno", "Nealkoholické nápoje"],
+        },
+        services: {
+          label: "Služby",
+          title: "Všetko pre pohodlnú zastávku",
+          description: "Priestor je pripravený na krátku pauzu, rodinný obed aj rýchly nákup so sebou.",
+          items: ["Jedlo na mieste", "Jedlo so sebou", "Vonkajšie sedenie", "Drive In", "Bezplatné parkovanie"],
+        },
+      };
+
+      const assistantReplies = {
+        menu: {
+          title: "Dnešný výber",
+          body: "Najrýchlejšia voľba je bufet, šalátový bar alebo burger. Výber si viete poskladať podľa chuti priamo na mieste.",
+          action: "Pozrieť výber",
+          href: "#menu",
+        },
+        drive: {
+          title: "Rýchla zastávka",
+          body: "Drive In je vhodný, keď idete po D1 a chcete jedlo so sebou bez dlhého čakania.",
+          action: "Navigovať",
+          href: "https://www.google.com/maps/search/?api=1&query=Motorest%20Cataj%20D1%20900%2083%20Cataj",
+        },
+        family: {
+          title: "Pokojné posedenie",
+          body: "Interiér aj vonkajšie sedenie sú vhodné pre rodiny, skupiny aj jednotlivcov na dlhšej prestávke.",
+          action: "Rezervovať",
+          href: "#rezervacia",
+        },
+        contact: {
+          title: "Priamy kontakt",
+          body: "Najrýchlejšie sa dovoláte na čísle 0904 555 777.",
+          action: "Zavolať",
+          href: "tel:+421904555777",
+        },
+      };
+
+      const menuLabel = document.querySelector("#menu-label");
+      const menuTitle = document.querySelector("#menu-title");
+      const menuDescription = document.querySelector("#menu-description");
+      const menuItems = document.querySelector("#menu-items");
+
+      function renderMenu(key) {
+        const menu = menus[key] || menus.food;
+        menuLabel.textContent = menu.label;
+        menuTitle.textContent = menu.title;
+        menuDescription.textContent = menu.description;
+        menuItems.innerHTML = menu.items
+          .map(
+            (item) => `
+              <div class="menu-item">
+                <h4>${item}</h4>
+                <p>Dostupné podľa dennej ponuky a aktuálneho výberu kuchyne.</p>
+              </div>
+            `,
+          )
+          .join("");
+
+        document.querySelectorAll("[data-menu]").forEach((button) => {
+          button.classList.toggle("active", button.dataset.menu === key);
+        });
+      }
+
+      document.querySelectorAll("[data-menu]").forEach((button) => {
+        button.addEventListener("click", () => renderMenu(button.dataset.menu));
+      });
+
+      renderMenu("food");
+
+      const form = document.querySelector("#reservation-form");
+      const success = document.querySelector("#form-success");
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+        success.style.display = "block";
+      });
+
+      const panel = document.querySelector("#assistant-panel");
+      const toggle = document.querySelector("#assistant-toggle");
+      const close = document.querySelector("#assistant-close");
+      const assistantTitle = document.querySelector("#assistant-title");
+      const assistantBody = document.querySelector("#assistant-body");
+      const assistantAction = document.querySelector("#assistant-action");
+
+      function setAssistantOpen(open) {
+        panel.classList.toggle("open", open);
+        toggle.setAttribute("aria-expanded", open ? "true" : "false");
+        toggle.textContent = open ? "Zavrieť" : "Rýchla pomoc";
+      }
+
+      toggle.addEventListener("click", () => setAssistantOpen(!panel.classList.contains("open")));
+      close.addEventListener("click", () => setAssistantOpen(false));
+
+      document.querySelectorAll("[data-topic]").forEach((button) => {
+        button.addEventListener("click", () => {
+          const reply = assistantReplies[button.dataset.topic] || assistantReplies.menu;
+          assistantTitle.textContent = reply.title;
+          assistantBody.textContent = reply.body;
+          assistantAction.textContent = reply.action;
+          assistantAction.href = reply.href;
+          document.querySelectorAll("[data-topic]").forEach((choice) => {
+            choice.classList.toggle("active", choice === button);
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
