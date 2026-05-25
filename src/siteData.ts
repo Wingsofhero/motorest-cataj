@@ -1,6 +1,6 @@
 import buffetImage from "./assets/buffet.png";
 import burgerImage from "./assets/burger-dessert.png";
-import driveInImage from "./assets/drive-in.png";
+import dessertImage from "./assets/dessert-coffee.png";
 import heroAsset from "./assets/motorest-hero.png";
 
 export type MenuCategory = {
@@ -14,7 +14,7 @@ export type MenuCategory = {
 export type AssistantTopic = "menu" | "drive" | "family" | "contact";
 
 export const heroImage = heroAsset;
-export const driveInPhoto = driveInImage;
+export const driveInPhoto = heroAsset;
 
 export const site = {
   name: "Motorest Cataj",
@@ -85,14 +85,14 @@ export const gallery = [
     image: buffetImage,
   },
   {
-    title: "Burgre a domáce dezerty",
-    description: "Rýchle jedlo na cestu aj sladká bodka ku káve.",
+    title: "Burger na cestu",
+    description: "Poctivý burger, hranolky a čerstvá príloha pre rýchlu, ale dobrú zastávku.",
     image: burgerImage,
   },
   {
-    title: "Drive In pri D1",
-    description: "Pohodlné riešenie, keď potrebujete dobré jedlo bez dlhej prestávky.",
-    image: driveInImage,
+    title: "Dezert a káva",
+    description: "Sladká bodka ku káve v pokojnom, teplom prostredí motorestu.",
+    image: dessertImage,
   },
 ];
 
