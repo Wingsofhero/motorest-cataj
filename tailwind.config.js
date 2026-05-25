@@ -4,11 +4,11 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        display: ["Georgia", "serif"],
+        display: ["Cormorant Garamond", "Georgia", "serif"],
         body: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"],
       },
       boxShadow: {
-        glow: "0 0 40px rgba(250, 204, 21, 0.16)",
+        glow: "0 20px 70px rgba(90, 55, 38, 0.08)",
       },
     },
   },
